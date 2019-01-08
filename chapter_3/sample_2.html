@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<title>はじめてのVue.js</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="buki-list">
+	<buki-list-title></buki-list-title>
+	<buki-list-description></buki-list-description>
+	<buki-list-table></buki-list-table>
+</div>
+
+<script>
+Vue.component('buki-list-title', {
+	template: '<h1>ブキ一覧</h1>'
+})
+// var BukiListTitle = Vue.extend({
+// 	template: '<h1>ブキ一覧</h1>'
+// })
+// new BukiListTitle().$mount('#buki-list')
+// or
+// Vue.component('buki-list-title', BukiListTitle)
+
+Vue.component('buki-list-description', {
+	template: '<p>役割ごとの代表的なブキの一覧です</p>'
+})
+
+Vue.component('buki-list-table', {
+	// バッククォートでヒアドキュメントみたく書けるんですね…！
+	template: `
+	<table>
+		<tr>
+			<th>役割</th>
+			<th>ブキ</th>
+		</tr>
+		<tr>
+			<td>塗り</td>
+			<td>プロモデラーMG</td>
+		</tr>
+		<tr>
+			<td>キル</td>
+			<td>スプラローラー</td>
+		</tr>
+		<tr>
+			<td>塗り＋キル</td>
+			<td>シャープマーカー</td>
+		</tr>
+		<tr>
+			<td>後方援護</td>
+			<td>ボールドマーカーネオ</td>
+		</tr>
+	</table>
+`
+})
+
+new Vue({
+	el: '#buki-list'
+})
+</script>
