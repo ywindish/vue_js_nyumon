@@ -20,6 +20,14 @@ var vm = new Vue({
 	el: '#app',
 	data: { // dataプロパティ
 		items: items
+	},
+	filters: { // フィルタの定義
+		numberWithDelimiter: function(value) {
+			if (!value) {
+				return 0;
+			}
+			return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+		}
 	}
 })
 
