@@ -1,16 +1,16 @@
 var items = [
 	{
-		name: '鉛筆',
+		name: 'スプラローラー',
 		price: 300,
 		quantity: 0
 	},
 	{
-		name: 'ノート',
+		name: 'スパイガジェット',
 		price: 400,
 		quantity: 0
 	},
 	{
-		name: '消しゴム',
+		name: 'バレルスピナーデコ',
 		price: 500,
 		quantity: 0
 	}
@@ -27,6 +27,15 @@ var vm = new Vue({
 				return 0;
 			}
 			return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+		}
+	},
+	methods: {
+		doBuy: function() {
+			// 本来はここで、サーバと通信を行う
+			alert(this.totalPriceWithTax + '円のお買い上げでし！');
+			this.items.forEach(function(item) {
+				item.quantity = 0
+			})
 		}
 	},
 	computed: {
