@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<title>はじめてのVue.js</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="buki-counter">
+	<div v-for="buki in bukis">
+		{{ buki.name }}: <counter-button v-on:increment="incrementCartStatus()"></counter-button>
+	</div>
+	<p>合計：{{ total }}</p>
+</div>
+
+<script>
+var counterButton = Vue.extend({
+	template: '<span>{{ counter }}個<button v-on:click="addToCart">追加</button></span>',
+	data: function() {
+		return {
+			counter: 0
+		}
+	},
+	methods: {
+		addToCart: function() {
+			this.counter += 1
+			this.$emit('increment') // incrementカスタムイベントの発火
+		}
+	}
+})
+
+new Vue({
+	el: '#buki-counter',
+	components: {
+		'counter-button': counterButton
+	},
+	data: {
+		total: 0,
+		bukis: [
+			{ name: 'ローラー' },
+			{ name: 'スピナー' },
+			{ name: 'シューター' },
+			{ name: 'ブラシ' }
+		]
+	},
+	methods: {
+		incrementCartStatus: function() {
+			this.total += 1
+		}
+	}
+})
+
+</script>

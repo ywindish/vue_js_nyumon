@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<title>はじめてのVue.js</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="buki-component">
+	<ol>
+		<buki-item-name v-for="buki in bukiItems" :key="buki.name" :buki-item="buki"></buki-item-name>
+	</ol>
+</div>
+
+<script>
+Vue.component('buki-item-name', {
+	props: {
+		bukiItem: {
+			type: Object, // オブジェクトかどうか
+			required: true  // このコンポーネントには必須なのでtrue
+		}
+	},
+	template: '<li>{{ bukiItem.name }}</li>'
+})
+
+new Vue({
+	el: '#buki-component',
+	data: { // 親では配列だが v-for で Object として渡している
+		bukiItems: [
+			{ name: 'ローラー'},
+			{ name: 'スピナー'}
+		]
+	}
+})
+
+</script>
