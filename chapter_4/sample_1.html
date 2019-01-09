@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vue.js入門 Chapter 4</title>
+</head>
+<body>
+
+<div id="app">
+	<router-link to="/top">トップページ</router-link>
+	<router-link to="/users">ユーザー一覧ページ</router-link>
+	<router-view></router-view>
+</div>
+
+<script src="https://unpkg.com/vue@2.5.17"></script>
+<script src="https://unpkg.com/vue-router@3.0.1"></script>
+<script>
+// ルートオプションを渡してルーターインスタンスを生成
+var router = new VueRouter({
+	// コンポーネントをマッピングしたルート定義を配列で渡す
+	routes: [
+		{
+			path: '/top',
+			component: {
+				template: '<div>トップページだよ</div>'
+			}
+		},
+		{
+			path: '/users',
+			component: {
+				template: '<div>ユーザ一覧ページだよ</div>'
+			}
+		}
+	]
+})
+
+// ルーターのインスタンスをrootとなるVueインスタンスにわたす
+var app = new Vue({
+	router: router
+}).$mount('#app')
+
+</script>
+</body>
+</html>
